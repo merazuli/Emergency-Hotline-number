@@ -10,7 +10,8 @@ for (const callBtn of callBtns) {
         const serviceNumber = callBtn.parentNode.parentNode.children[2].innerText;
         const coinBalance = getElement('coin-balance').innerText;
         const historySection = document.getElementById('history-section');
-        if (coinBalance > 30) {
+        callBtn.classList.add('bg-red-500');
+        if (coinBalance < 0 || coinBalance > 19) {
             const afterCoin = coinBalance - 20;
             getElement('coin-balance').innerText = afterCoin;
             const now = new Date().toLocaleTimeString();
@@ -27,10 +28,10 @@ for (const callBtn of callBtns) {
                         </div> `
 
             historySection.appendChild(div);
-            alert(`${serviceInfo} - ${serviceNumber}`);
+            alert(`📞 Calling  ${serviceInfo} - ${serviceNumber}....`);
         }
         else {
-            alert('No Valid Coin');
+            alert('❌ আপনার পর্যাপ্ত পরিমান কয়েন নেই। কল করতে কমপক্ষে ২০ টা কয়েন লাগবে!');
         }
     })
     const clearBtn = getElement('clear-btn').addEventListener('click', function () {
@@ -63,7 +64,7 @@ for (const copyBtn of copyBtns) {
         copyCount.innerText = total;
         try {
             await navigator.clipboard.writeText(serviceNumber);
-            alert("কপি হয়েছে: " + serviceNumber);
+            alert(" নাম্বার কপি হয়েছে: " + serviceNumber);
         } catch (err) {
             alert("কপি ব্যর্থ হয়েছে!");
         }
