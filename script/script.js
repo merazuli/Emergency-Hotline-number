@@ -2,7 +2,7 @@ function getElement(id) {
     const element = document.getElementById(id);
     return element;
 }
-
+// call Button Function 
 const callBtns = document.getElementsByClassName('call-btn');
 for (const callBtn of callBtns) {
     callBtn.addEventListener('click', function () {
@@ -44,14 +44,15 @@ const heartCount = getElement('heart-count');
 
 for (let heartBtn of heartBtns) {
     heartBtn.addEventListener('click', function () {
+        heartBtn.classList.add('text-red-500');
         let total = parseInt(heartCount.innerText);
         total++;
         heartCount.innerText = total;
 
+
     });
 }
-
-// copy button function 
+// copy count button function 
 const copyCount = getElement('copy-count');
 const copyBtns = document.getElementsByClassName('copy-btn');
 for (const copyBtn of copyBtns) {
